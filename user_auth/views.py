@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
@@ -36,3 +37,27 @@ def register(request):
         )
 
     return render(request, 'authentication/register.html')
+
+def authenticate_user(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is None:
+        messages.error(request, 'Wrong credentials! Enter details again.')
+        return HttpResponseRedirect(
+            reverse('user_auth:login')
+        )
+    else:
+        login(request, user)
+        return HttpResponseRedirect(
+            reverse('user_auth:home')
+        )
+
+def home(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(
+            reverse('user_auth:login')
+        )
+    return render(request, 'mainapp/homepage', {
+        "username": request.user.username
+    })
