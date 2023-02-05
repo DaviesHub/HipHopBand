@@ -11,3 +11,8 @@ class Album(models.model):
 
     def __str__(self):
         return self.title
+
+class TrackList(models.Model):
+    album = models.ForeignKey(Album, related_name='track_list', on_delete=models.CASCADE)
+    song_name = models.CharField(max_length=100)
+    track_id = models.IntegerField(primary_key=True)
