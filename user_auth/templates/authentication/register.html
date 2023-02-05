@@ -1,0 +1,52 @@
+{% block title %}Register | {% endblock %}
+
+<div>Sign up for more music experience</div>
+
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+</div>
+
+<form action="{% url 'user_auth:register' %}" method="post">
+    {% csrf_token %}
+        <div>
+            <label for="">First Name</label>
+            <input type="text" id="firstname" name="firstname">
+        </div>
+        <br>
+
+        <div>
+            <label for="">lastname</label>
+            <input type="text" id="lastname" name="lastname">
+        </div>
+        <br>
+
+        <div>
+            <label for="">Username</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <br>
+
+        <div>
+            <label for="">Email</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <br>
+
+        <div>
+            <label for="">Password</label>
+            <input type="text" id="password1" name="password1">
+        </div>
+        <br>
+
+        <div>
+            <label for="">Confirm password</label>
+            <input type="text" id="password2" name="password2">
+        </div>
+        <br>
+
+        <input type="submit" label="Sign Up"/>
+</form>
