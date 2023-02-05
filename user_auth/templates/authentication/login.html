@@ -1,0 +1,29 @@
+{% block title %}Login | {% endblock %}
+
+<div>Login to view tour dates, purchase our tickets and merch.</div>
+
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor}
+    {% endif %}
+</div>
+
+<form action="{% url 'user_auth:authenticate_user' %}" method="post">
+    {% csrf_token %}
+
+    <div>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="username" required>
+    </div>
+    <br>
+
+    <div>
+        <label>Password</label>
+        <input type="text" name="password" placeholder="username" required>
+    </div>
+    <br>
+
+    <input type="submit" value="Login"/>
+</form>
