@@ -18,3 +18,14 @@ class TrackList(models.Model):
     song_name = models.CharField(max_length=100)
     track_id = models.IntegerField()
     slug = models.SlugField()
+
+class Tour(models.model):
+    tour_name = models.CharField(max_length=100)
+    tour_date = models.DateTimeField()
+    tour_location = models.CharField(max_length=255)
+    slug = models.SlugField()
+
+class Members(models.model):
+    member_photo = models.ImageField(upload_to='member_photos/', blank=True, null=True)
+    member_name = models.CharField(max_length=100)
+    slug = models.SlugField()
