@@ -7,6 +7,10 @@ from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
+def band_index(request):
+    
+    return render(request, 'bandapp/index.html')
+
 def login(request):
     return render(request, 'authentication/login.html')
 
