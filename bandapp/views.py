@@ -3,6 +3,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import Album, Tour, Members, Merch
 
 # Create your views here.
+def band_index(request):
+    
+    return render(request, 'bandapp/index.html')
+
 def album_detail(request, album_slug):
     album = get_object_or_404(Album, slug=album_slug)
 
