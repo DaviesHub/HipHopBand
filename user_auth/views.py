@@ -4,9 +4,13 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
+from bandapp.views import *
 
 
 # Create your views here.
+def index(request):
+    return render(request, 'bandapp/base.html')
+    
 def user_login(request):
     return render(request, 'authentication/login.html')
 

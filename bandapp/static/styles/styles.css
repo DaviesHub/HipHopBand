@@ -1,3 +1,5 @@
-nav .navbar {
-    background-color: #33006F;
+nav.navbar,
+footer.footer {
+    background-color: #FF00BF;
 }
+
