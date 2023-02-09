@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
-def login(request):
+def user_login(request):
     return render(request, 'authentication/login.html')
 
 def register(request):
@@ -33,7 +33,7 @@ def register(request):
 
         messages.success(request, 'Your account has been created successfully!')
         return HttpResponseRedirect(
-            reverse('user_auth:login')
+            reverse('user_auth:user_login')
         )
 
     return render(request, 'authentication/register.html')
@@ -45,7 +45,7 @@ def authenticate_user(request):
     if user is None:
         messages.error(request, 'Wrong credentials! Enter details again.')
         return HttpResponseRedirect(
-            reverse('user_auth:login')
+            reverse('user_auth:user_login')
         )
     else:
         login(request, user)
@@ -56,7 +56,7 @@ def authenticate_user(request):
 def home(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(
-            reverse('user_auth:login')
+            reverse('user_auth:user_login')
         )
     return render(request, 'mainapp/homepage', {
         "username": request.user.username

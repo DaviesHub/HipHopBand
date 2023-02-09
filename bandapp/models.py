@@ -8,7 +8,7 @@ class Album(models.Model):
     slug = models.SlugField()
 
     class Meta:
-        ordering = ('-release_date')
+        ordering = ('-release_date',)
 
     def __str__(self):
         return self.title
@@ -29,7 +29,7 @@ class Tour(models.Model):
     slug = models.SlugField()
 
     class Meta:
-        ordering = ('-tour_date')
+        ordering = ('-tour_date',)
 
     def __str__(self):
         return self.tour_name
