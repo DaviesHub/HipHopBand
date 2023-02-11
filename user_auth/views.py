@@ -9,7 +9,7 @@ from bandapp.views import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'bandapp/base.html')
+    return render(request, 'bandapp/index.html')
     
 def user_login(request):
     return render(request, 'authentication/login.html')

@@ -1,14 +1,13 @@
-<!--Auth bar-->
-<section class="bg-light text-dark p-1 mt-5">
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img class="img-logo img-fluid" src="./images/ark_logo.png" alt="">
-            </a>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+{% extends 'bandapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Funk Flow | {% endblock %}
+
+{% block content %}
+    <section class="section responsive-bg" style="background-image: url('static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="h3">
+            Join the movement and experience the energy of FunkFlow&trade;, the hip hop collective that's taking the music industry by storm
         </div>
-    </nav>
-</section>
+    </section>
+{% endblock %}
