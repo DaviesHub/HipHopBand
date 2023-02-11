@@ -10,9 +10,30 @@ body {
 
 nav.navbar,
 footer.footer {
-    background-color: #8B008B;
+    background-color: #452c63;
 }
 
 .nav-icon {
     color: #F0E68C;
+}
+
+.index-intro {
+    color: #F0E68C;
+    font-family: 'Notable', sans-serif;
+}
+
+@media (max-width: 576px) {
+    .index-intro {
+        font-size: 15px;
+    }
+}
+
+.footer-text {
+    font-size: 14px;
+}
+
+@media (max-width: 576px) {
+    .footer-text {
+        font-size: 10px;
+    }
 }
