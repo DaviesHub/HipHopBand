@@ -46,3 +46,9 @@ footer.footer {
 .cta {
     color: #F0E68C;
 }
+
+@media (max-width: 576px) {
+    .cta {
+        padding-left: 10px;
+    }
+}
