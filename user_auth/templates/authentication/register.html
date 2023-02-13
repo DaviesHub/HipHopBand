@@ -9,13 +9,14 @@
         <div class="container d-flex flex-column gap-4">
             <div style="color: yellow; font-weight: bold; font-family: 'Notable', sans-serif;" class="h4">SIGN UP FOR MORE FunkFlow EXPERIENCE.</div>
 
-            <div class="msg-container">
-                {% if messages %}
+            {% if messages %}
+                <div class="alert alert-warning alert-dismissible fade show msg-container" role="alert">
                     {% for message in messages %}
                         {{ message }}
                     {% endfor %}
-                {% endif %}
-            </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
 
             <form action="{% url 'user_auth:register' %}" method="post">
                 {% csrf_token %}

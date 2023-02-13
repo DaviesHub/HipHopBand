@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-expand-lg text-white">
         <div class="container-fluid px-5">
-            <a class="navbar-brand nav-icon" href="#">FunkFlow</a>
+            <a class="navbar-brand nav-icon" href="/">FunkFlow</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,8 +44,19 @@
                 </ul>
                 
                 <ul class="navbar-nav me-0">
-                    <li class="nav-item h4">
-                        <a class="nav-link disabled text-white"><i class="bi bi-person"></i></a>
+                    <!-- <a class="nav-link disabled text-white"><i class="bi bi-person"></i></a> -->
+                    <li class="nav-item dropdown h4">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #452c63;">
+                            {% if not request.resolver_match.url_name == 'user_login' %}
+                                <li><a class="dropdown-item text-white" href="/login">Log in</a></li>
+                            {% endif %}
+                            {% if not request.resolver_match.url_name == 'register' %}
+                                <li><a class="dropdown-item text-white" href="/register">Sign up</a></li>
+                            {% endif %}
+                        </ul>
                     </li>
                 </ul>
             </div>
