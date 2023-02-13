@@ -9,12 +9,13 @@
         <div class="container d-flex flex-column gap-4">
             <div style="color: #F0E68C; font-family: 'Allerta Stencil', sans-serif;">Login to view tour dates, purchase our tickets and merch.</div>
 
-            <div class="msg-container">
+            <div class="alert alert-warning alert-dismissible fade show msg-container" role="alert">
                 {% if messages %}
                     {% for message in messages %}
                         {{ message }}
                     {% endfor %}
                 {% endif %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
             <form action="{% url 'user_auth:authenticate_user' %}" method="post">
@@ -41,4 +42,3 @@
         </div>
     </section>
 {% endblock %}
-

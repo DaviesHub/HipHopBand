@@ -1,52 +1,62 @@
+{% extends 'bandapp/base.html' %}
+
+{% load static %}
+
 {% block title %}Register | {% endblock %}
 
-<div>Sign up for more music experience</div>
+{% block content %}
+    <section class="section login-section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="container d-flex flex-column gap-4">
+            <div style="color: yellow; font-weight: bold; font-family: 'Notable', sans-serif;" class="h4">SIGN UP FOR MORE FunkFlow EXPERIENCE.</div>
 
-<div class="container">
-    {% if messages %}
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    {% endif %}
-</div>
+            <div class="msg-container">
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            </div>
 
-<form action="{% url 'user_auth:register' %}" method="post">
-    {% csrf_token %}
-        <div>
-            <label for="">First Name</label>
-            <input type="text" id="firstname" name="firstname">
+            <form action="{% url 'user_auth:register' %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <label class="me-4" style="color: #F0E68C;" for="">First Name</label>
+                    <input type="text" id="firstname" name="firstname">
+                </div>
+                <br>
+        
+                <div>
+                    <label class="me-4" style="color: #F0E68C;" for="">Last name</label>
+                    <input type="text" id="lastname" name="lastname">
+                </div>
+                <br>
+        
+                <div>
+                    <label class="me-4" style="color: #F0E68C;" for="">Username</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <br>
+        
+                <div>
+                    <label class="email-label" style="color: #F0E68C; margin-right: 3.5rem;" for="">Email</label>
+                    <input type="text" id="email" name="email">
+                </div>
+                <br>
+        
+                <div>
+                    <label class="me-4" style="color: #F0E68C;" for="">Password</label>
+                    <input type="text" id="password1" name="password1">
+                </div>
+                <br>
+        
+                <div>
+                    <label class="me-4" style="color: #F0E68C;" for="">Confirm password</label>
+                    <input type="text" id="password2" name="password2">
+                </div>
+                <br>
+        
+                <input class="mt-4 bg-warning text-dark fw-semibold" type="submit" label="Sign Up"/>
+            </form>
         </div>
-        <br>
-
-        <div>
-            <label for="">lastname</label>
-            <input type="text" id="lastname" name="lastname">
-        </div>
-        <br>
-
-        <div>
-            <label for="">Username</label>
-            <input type="text" id="username" name="username">
-        </div>
-        <br>
-
-        <div>
-            <label for="">Email</label>
-            <input type="text" id="email" name="email">
-        </div>
-        <br>
-
-        <div>
-            <label for="">Password</label>
-            <input type="text" id="password1" name="password1">
-        </div>
-        <br>
-
-        <div>
-            <label for="">Confirm password</label>
-            <input type="text" id="password2" name="password2">
-        </div>
-        <br>
-
-        <input type="submit" label="Sign Up"/>
-</form>
+    </section>
+{% endblock %}
