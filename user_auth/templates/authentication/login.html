@@ -5,34 +5,40 @@
 {% block title %}Login | {% endblock %}
 
 {% block content %}
-    <section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
-        <div>Login to view tour dates, purchase our tickets and merch.</div>
+    <section class="section login-section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="container d-flex flex-column gap-4">
+            <div style="color: #F0E68C; font-family: 'Allerta Stencil', sans-serif;">Login to view tour dates, purchase our tickets and merch.</div>
 
-        <div class="container">
-            {% if messages %}
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            {% endif %}
+            <div class="msg-container">
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <form action="{% url 'user_auth:authenticate_user' %}" method="post">
+                {% csrf_token %}
+
+                <div>
+                    <label class="me-4" style="color: #F0E68C";>Username</label>
+                    <input type="text" name="username" placeholder="username" required>
+                </div>
+                <br>
+
+                <div>
+                    <label class="me-4" style="color: #F0E68C";>Password</label>
+                    <input type="text" name="password" required>
+                </div>
+                <br>
+
+                <input class="mt-4 bg-warning text-dark fw-semibold" type="submit" value="Login"/>
+            </form>
+
+            <div>
+                <a href="#" class="btn btn-warning fw-semibold btn-sm" role="button">Sign Up</a>
+            </div>
         </div>
-
-        <form action="{% url 'user_auth:authenticate_user' %}" method="post">
-            {% csrf_token %}
-
-            <div>
-                <label>Username</label>
-                <input type="text" name="username" placeholder="username" required>
-            </div>
-            <br>
-
-            <div>
-                <label>Password</label>
-                <input type="text" name="password" placeholder="username" required>
-            </div>
-            <br>
-
-            <input type="submit" value="Login"/>
-        </form>
     </section>
 {% endblock %}
 
