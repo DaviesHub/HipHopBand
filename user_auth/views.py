@@ -27,7 +27,7 @@ def register(request):
             messages.error(request, 'Username already in use. Choose a different username.')
             return render(request, 'authentication/register.html')
 
-        if password1 == password2:
+        if password1 != password2:
             messages.error(request, 'Passwords do not match. Enter password again.')
             return render(request, 'authentication/register.html')
 
@@ -62,6 +62,6 @@ def home(request):
         return HttpResponseRedirect(
             reverse('user_auth:user_login')
         )
-    return render(request, 'mainapp/homepage', {
-        "username": request.user.username
+    return render(request, 'bandapp/home.html', {
+        "firstname": request.user.first_name
     })

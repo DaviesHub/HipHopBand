@@ -57,3 +57,7 @@ footer {
         padding-left: 10px;
     }
 }
+
+.card {
+    height: 100%;
+}

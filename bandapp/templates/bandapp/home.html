@@ -1,0 +1,89 @@
+{% extends 'bandapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Funk Flow | {% endblock %}
+
+{% block content %}
+    <section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="h4 index-intro">
+            Hello <span style="color: yellow; font-weight: bold;">{{ firstname }}</span>! Welcome to <span style="color: yellow; font-weight: bold;">FunkFlow&trade;</span>, the hip hop collective that's taking the music industry by storm. Enjoy the <span style="color: yellow; font-weight: bold;">FL</span>experience.
+        </div>
+
+        <section class="px-sm-5 text-light mt-5">
+            <div class="container pt-5">
+                <div class="row text-center justify-content-around g-5">
+                    <div class="col-lg-4">
+                        <div class="card album-card shadow bg-transparent border border-3 border-secondary text-light">
+                            <div class="card-body text-center">
+                                <div class="title mb-3 mt-1">
+                                    <h5 class="card-title">ALBUMS</h5>
+                                </div>
+                                <div class="body-image-container">
+                                    <img class="img-fluid rounded-top card-img" src="{% static 'images/album_pic.jpg' %}" alt=""/>
+                                </div>                                
+                                <a target="_blank" href="#"><button class="btn text-white card-button">Disrupt The Mix</button></a>
+                                <div>
+                                    <a target="_blank" href="ocr.html" class="text-decoration-none text-warning fw-bold">See more...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-4">
+                        <div class="card tour-card shadow bg-transparent border border-3 border-secondary text-light">
+                            <div class="card-body text-center">
+                                <div class="title mb-3 mt-1">
+                                    <h5 class="card-title">TOUR</h5>
+                                </div>
+                                <div class="body-image-container">
+                                    <img class="img-fluid rounded-top card-img" src="{% static 'images/tour_pic.jpg' %}" alt=""/>
+                                </div>                                
+                                <a target="_blank" href="#"><button class="btn text-white card-button">North America</button></a>
+                                <div>
+                                    <a target="_blank" href="ocr.html" class="text-decoration-none text-warning fw-bold">See more...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="row text-center justify-content-around g-5 mt-5">
+                    <div class="col-lg-4">
+                        <div class="card tour-card shadow bg-transparent border border-3 border-secondary text-light">
+                            <div class="card-body text-center">
+                                <div class="title mb-3 mt-1">
+                                    <h5 class="card-title">Merch</h5>
+                                </div>
+                                <div class="body-image-container">
+                                    <img class="img-fluid rounded-top card-img" src="{% static 'images/merch_pic.jpg' %}" style="height: 204px;"malt=""/>
+                                </div>                                
+                                <a target="_blank" href="#"><button class="btn text-white card-button">WE ARE ONE</button></a>
+                                <div>
+                                    <a target="_blank" href="ocr.html" class="text-decoration-none text-warning fw-bold">See more...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-4">
+                        <div class="card shadow bg-transparent border border-3 border-secondary text-light">
+                            <div class="card-body text-center">
+                                <div class="title mb-3 mt-1">
+                                    <h5 class="card-title">Reach Out</h5>
+                                </div>
+                                <div class="body-image-container">
+                                    <img class="img-fluid rounded-top card-img" src="{% static 'images/reachout_pic.jpg' %}" alt=""/>
+                                </div>                                
+                                <a target="_blank" href="#"><button class="btn text-white card-button">Contact us</button></a>
+                                <div>
+                                    <a target="_blank" href="ocr.html" class="text-decoration-none text-success fw-bold">See more...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}
