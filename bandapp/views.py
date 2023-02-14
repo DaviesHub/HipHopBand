@@ -1,11 +1,20 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Album, Tour, Members, Merch
 
 # Create your views here.
-def band_index(request):
-    
-    return render(request, 'bandapp/index.html')
+def albums(request):
+    if request.user.is_authenticated:
+        album_list = Album.objects.order_by('-release_date')
+        context = {'album_list': album_list,}
+
+        return render(request, "bandapp/albums.html", context)
+    else:
+        return HttpResponseRedirect(
+            reverse('user_auth:user_login')
+        )
 
 def album_detail(request, album_slug):
     album = get_object_or_404(Album, slug=album_slug)
