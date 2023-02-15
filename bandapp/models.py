@@ -26,6 +26,7 @@ class Tour(models.Model):
     tour_name = models.CharField(max_length=100)
     tour_date = models.DateTimeField()
     tour_location = models.CharField(max_length=255)
+    tour_image = models.ImageField(upload_to='tour_art/', blank=True, null=True)
     slug = models.SlugField()
 
     class Meta:

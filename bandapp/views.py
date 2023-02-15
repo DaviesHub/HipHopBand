@@ -16,6 +16,17 @@ def albums(request):
             reverse('user_auth:user_login')
         )
 
+def tours(request):
+    if request.user.is_authenticated:
+        tour_list = Tour.objects.order_by('-tour_date')
+        context = {'tour_list': tour_list,}
+
+        return render(request, "bandapp/tours.html", context)
+    else:
+        return HttpResponseRedirect(
+            reverse('user_auth:user_login')
+        )
+
 def album_detail(request, album_slug):
     album = get_object_or_404(Album, slug=album_slug)
 

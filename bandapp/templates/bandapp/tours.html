@@ -2,29 +2,29 @@
 
 {% load static %}
 
-{% block title %}Albums | {% endblock %}
+{% block title %}Tours | {% endblock %}
 
 {% block content %}
     <section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
         <div class="h4 index-intro">
-            Here's our projects. <span style="color: yellow; font-weight: bold;">Enjoy!</span>
+            UPCOMING TOURS
         </div>
 
-        {% if album_list %}
+        {% if tour_list %}
         <section class="px-sm-5 text-light mt-5">
             <div class="container pt-5">
-                {% for album in album_list %}
+                {% for tour in tour_list %}
                 <div class="row text-center justify-content-around g-5">
                     <div class="col-lg-6">
                         <div class="card album-card shadow bg-transparent border border-3 border-secondary text-light">
                             <div class="card-body text-center">
                                 <div class="title mb-3 mt-1">
-                                    <h5 class="card-title">{{ album.album_title }}</h5>
+                                    <h5 class="card-title">{{ tour.tour_name }}</h5>
                                 </div>
                                 <div class="body-image-container">
-                                    <img class="img-fluid rounded-top card-img" src="{{ album.cover_art.url }}" alt=""/>
+                                    <img class="img-fluid rounded-top card-img" src="{{ tour.tour_image.url }}" alt=""/>
                                 </div>                                
-                                <a target="_blank" href="#"><button class="btn text-white card-button">Open</button></a>
+                                <a target="_blank" href="#"><button class="btn text-white card-button">{{ tour.tour_location }}</button></a>
                                 <div>
                                     <a target="_blank" href="/" class="text-decoration-none text-warning fw-bold">See more...</a>
                                 </div>
@@ -37,7 +37,7 @@
         </section>
         {% else %}
         <div class="h6 index-intro mt-5">
-            No projects available
+            No tours for now.
         </div>
         {% endif %}
     </section>
