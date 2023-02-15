@@ -10,5 +10,6 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('albums/', views.albums, name='albums'),
     path('tours/', views.tours, name='tours'),
+    path('merch/', views.merch_shop, name='merch'),
     path('', include('bandapp.urls')),
 ]

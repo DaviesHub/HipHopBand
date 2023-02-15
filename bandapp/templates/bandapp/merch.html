@@ -2,55 +2,54 @@
 
 {% load static %}
 
-{% block title %}Tours | {% endblock %}
-
-<!--Search bar-->
-<section class="bg-light text-dark p-1 mt-5">
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img class="img-logo img-fluid" src="./images/ark_logo.png" alt="">
-            </a>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-</section>
+{% block title %}Merch | {% endblock %}
 
 {% block content %}
+    <!--Search bar-->
+    <section class="bg-light text-dark p-1 mt-5">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img class="img-logo img-fluid" src="./images/ark_logo.png" alt="">
+                </a>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </section>
 
-<section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
-    <div class="h4 index-intro">
-        <span style="color: yellow; font-weight: bold;">FUNKFLOW</span>MERCH
-    </div>
+    <section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="h4 index-intro">
+            <span style="color: yellow; font-weight: bold;">FUNKFLOW</span>MERCH
+        </div>
 
-    {% if tour_list %}
-    <section class="px-sm-5 text-light mt-5">
-        <div class="container pt-5">
-            {% for tour in tour_list %}
-            <div class="row text-center justify-content-around g-5">
-                <div class="col-lg-6">
-                    <div class="col-md-6 col-lg-3 bg-dark">
-                        <div class="card p-2 w-100">
-                            <img src="./images/hoodie_1.jpg" class="card-img-top-six ihv-six img-fluid" alt="...">
-                            <div class="card-body text-dark">
-                                <h6 class="card-title">Men Letter Graphic Hoodie</h6>
-                                <p class="card-text fs-2">R450</p>
-                                <a href="#" class="btn btn-warning btn-lg">ADD TO BAG</a>
+        {% if merch_list %}
+        <section class="px-sm-5 text-light mt-5">
+            <div class="container pt-5">
+                {% for merch in merch_list %}
+                <div class="row text-center justify-content-around g-5">
+                    <div class="col-lg-6">
+                        <div class="col-md-6 col-lg-3 bg-dark">
+                            <div class="card p-2 w-100">
+                                <img src="./images/hoodie_1.jpg" class="card-img-top-six img-fluid" alt="...">
+                                <div class="card-body text-dark">
+                                    <h6 class="card-title">Men Letter Graphic Hoodie</h6>
+                                    <p class="card-text fs-2">R450</p>
+                                    <a href="#" class="btn btn-warning btn-lg">ORDER</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+        </section>
+        {% else %}
+        <div class="h6 index-intro mt-5">
+            No merch available. Check later.
         </div>
+        {% endif %}
     </section>
-    {% else %}
-    <div class="h6 index-intro mt-5">
-        No tours for now.
-    </div>
-    {% endif %}
-</section>
 {% endblock %}

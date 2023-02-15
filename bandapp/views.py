@@ -18,7 +18,7 @@ def albums(request):
 
 def tours(request):
     if request.user.is_authenticated:
-        tour_list = Tour.objects.order_by('-tour_date')
+        tour_list = Tour.objects.order_by('-tour_date')[:1]
         context = {'tour_list': tour_list,}
 
         return render(request, "bandapp/tours.html", context)
@@ -37,12 +37,13 @@ def tour_detail(request, tour_slug):
 
     return render(request, 'bandapp/album_detail.html', {'tour': tour})
 
-def member_detail(request, member_slug):
-    member = get_object_or_404(Members, slug=member_slug)
+def merch_shop(request):
+    if request.user.is_authenticated:
+        merch_list = Merch.objects.all()
+        context = {'merch_list': merch_list}
 
-    return render(request, 'bandapp/member_detail.html', {'member': member})
-
-def merch_shop(request, merch_slug):
-    merch = get_object_or_404(Merch, slug=merch_slug)
-
-    return render(request, 'bandapp/merch_detail.html', {'merch': merch})
+        return render(request, 'bandapp/merch.html', context)
+    else:
+        return HttpResponseRedirect(
+            reverse('user_auth:user_login')
+        )
