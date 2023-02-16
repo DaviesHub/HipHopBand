@@ -21,8 +21,11 @@
     </section>
 
     <section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
-        <div class="h4 index-intro">
-            <span style="color: yellow; font-weight: bold;">FUNKFLOW</span>MERCH
+        <div class="h2 search-intro" style="color:yellow;">
+            Search results
+        </div>
+        <div class="h4 query-intro" style="color:yellow;">
+            Query "{{ query }}"
         </div>
 
         {% if merch_list %}
@@ -30,25 +33,25 @@
             <div class="container pt-5">
                 <div class="row g-4">
                     {% for merch in merch_list %}
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card merch-card p-2 w-100">
-                            <img src="{{ merch.merch_photo.url }}" class="merch-card-img img-fluid" style="height: 490px;" alt="...">
-                            <div class="card-body text-dark">
-                                <h6 class="card-title fw-semibold fs-4" style="color: #452c63">{{ merch.merch_name }}</h6>
-                                <h6 class="card-title">{{ merch.merch_description }}</h6>
-                                <p class="card-text fs-3">R {{ merch.merch_price }}</p>
-                                <a href="#" class="btn btn-warning btn-lg">ORDER</a>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card merch-card p-2 w-100">
+                                <img src="{{ merch.merch_photo.url }}" class="merch-card-img img-fluid" style="height: 490px;" alt="...">
+                                <div class="card-body text-dark">
+                                    <h6 class="card-title fw-semibold fs-4" style="color: #452c63">{{ merch.merch_name }}</h6>
+                                    <h6 class="card-title">{{ merch.merch_description }}</h6>
+                                    <p class="card-text fs-3">R {{ merch.merch_price }}</p>
+                                    <a href="#" class="btn btn-warning btn-lg">ORDER</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>                
             </div>
         </section>
         {% else %}
-        <div class="h6 index-intro mt-5">
-            No merch available. Check later.
-        </div>
+            <div class="h6 index-intro mt-5">
+                No results for "{{ query }}".
+            </div>
         {% endif %}
     </section>
 {% endblock %}

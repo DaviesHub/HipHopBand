@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -47,3 +48,15 @@ def merch_shop(request):
         return HttpResponseRedirect(
             reverse('user_auth:user_login')
         )
+
+def merch_search(request):
+    if request.user.is_authenticated:
+        query = request.GET.get('query', '')
+        merch_list = Merch.objects.filter(Q(merch_description__icontains=query) | Q(merch_name__icontains=query))
+
+        return render(request, 'bandapp/merch_search.html', {'merch_list': merch_list, 'query': query})
+    else:
+        return HttpResponseRedirect(
+            reverse('user_auth:user_login')
+        )
+
