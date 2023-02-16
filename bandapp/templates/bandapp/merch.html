@@ -6,7 +6,7 @@
 
 {% block content %}
     <!--Search bar-->
-    <section class="bg-light text-dark p-1 mt-5">
+    <section class="bg-light text-dark p-1">
         <nav class="navbar bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -30,9 +30,9 @@
             <div class="container pt-5">
                 <div class="row g-4">
                     {% for merch in merch_list %}
-                    <div class="col-md-12 col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="card merch-card p-2 w-100">
-                            <img src="{{ merch.merch_photo.url }}" class="card-img-top-six img-fluid" style="height: 490px;" alt="...">
+                            <img src="{{ merch.merch_photo.url }}" class="merch-card-img img-fluid" style="height: 490px;" alt="...">
                             <div class="card-body text-dark">
                                 <h6 class="card-title fw-semibold fs-4" style="color: #452c63">{{ merch.merch_name }}</h6>
                                 <h6 class="card-title">{{ merch.merch_description }}</h6>
