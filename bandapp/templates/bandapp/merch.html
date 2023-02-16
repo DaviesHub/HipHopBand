@@ -28,22 +28,21 @@
         {% if merch_list %}
         <section class="px-sm-5 text-light mt-5">
             <div class="container pt-5">
-                {% for merch in merch_list %}
-                <div class="row text-center justify-content-around g-5">
-                    <div class="col-lg-6">
-                        <div class="col-md-6 col-lg-3 bg-dark">
-                            <div class="card p-2 w-100">
-                                <img src="./images/hoodie_1.jpg" class="card-img-top-six img-fluid" alt="...">
-                                <div class="card-body text-dark">
-                                    <h6 class="card-title">Men Letter Graphic Hoodie</h6>
-                                    <p class="card-text fs-2">R450</p>
-                                    <a href="#" class="btn btn-warning btn-lg">ORDER</a>
-                                </div>
+                <div class="row g-4">
+                    {% for merch in merch_list %}
+                    <div class="col-md-12 col-lg-4">
+                        <div class="card merch-card p-2 w-100">
+                            <img src="{{ merch.merch_photo.url }}" class="card-img-top-six img-fluid" style="height: 490px;" alt="...">
+                            <div class="card-body text-dark">
+                                <h6 class="card-title fw-semibold fs-4" style="color: #452c63">{{ merch.merch_name }}</h6>
+                                <h6 class="card-title">{{ merch.merch_description }}</h6>
+                                <p class="card-text fs-3">R {{ merch.merch_price }}</p>
+                                <a href="#" class="btn btn-warning btn-lg">ORDER</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>                
             </div>
         </section>
         {% else %}

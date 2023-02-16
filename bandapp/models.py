@@ -19,6 +19,9 @@ class TrackList(models.Model):
     track_id = models.IntegerField()
     slug = models.SlugField()
 
+    class Meta:
+        verbose_name_plural = 'Tracklist'
+
     def __str__(self):
         return self.album_title
 
@@ -35,19 +38,14 @@ class Tour(models.Model):
     def __str__(self):
         return self.tour_name
 
-class Members(models.Model):
-    member_photo = models.ImageField(upload_to='member_photos/', blank=True, null=True)
-    member_name = models.CharField(max_length=100)
-    slug = models.SlugField()
-
-    def __str__(self):
-        return self.member_name
-
 class Merch(models.Model):
     merch_photo = models.ImageField(upload_to='merch_photos/', blank=True, null=True)
     merch_name = models.CharField(max_length=255)
     merch_description = models.TextField(blank=True)
-    merch_price = models.DecimalField(max_digits=6, decimal_places=2)
+    merch_price = models.DecimalField(max_digits=6, decimal_places=1)
+
+    class Meta:
+        verbose_name_plural = 'Merch'
 
     def __str__(self):
-        return self.member_name
+        return self.merch_name

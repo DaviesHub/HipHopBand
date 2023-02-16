@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Album, Tour, Members, Merch
+from .models import Album, Tour, Merch
 
 # Create your views here.
 def albums(request):
