@@ -6,3 +6,4 @@ Album pic by dids on Pexels
 Tour pic by Lisa Fotios on Pexels
 Merch pic by Vitalinha on Pexels
 Reachout pic by Maria Tyutina on Pexels
+Tour photos by Pixabay on Pexels

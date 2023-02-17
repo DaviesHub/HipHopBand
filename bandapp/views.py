@@ -1,9 +1,10 @@
 from django.db.models import Q
+from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Album, Tour, Merch
+from .models import Album, Tour, Merch, Ticket
 
 # Create your views here.
 def albums(request):
@@ -33,10 +34,34 @@ def album_detail(request, album_slug):
 
     return render(request, 'bandapp/album_detail.html', {'album': album})
 
-def tour_detail(request, tour_slug):
-    tour = get_object_or_404(Tour, slug=tour_slug)
+def tour_detail(request, tour_id, tour_slug):
+    if request.user.is_autheticated:
+        tour = get_object_or_404(Tour, pk=tour_id, slug=tour_slug)
+        if request.method == 'POST':
+            quantity = int(request.POST['quantity'])
+            ticket = Ticket(tour=tour, user=request.user, quantity=quantity)
+            ticket.save()
 
-    return render(request, 'bandapp/album_detail.html', {'tour': tour})
+            return render(request, 'bandapp/ticket_confirmation.html')
+        else:
+            return render(request, 'bandapp/tour_detail.html', {'tour': tour})
+    else:
+        return HttpResponseRedirect(
+            reverse('user_auth:user_login')
+        )
+
+def ticket_confirmation(request, tour_id):
+    if request.user.is_authenticated:
+        tour = get_object_or_404(Tour, pk=tour_id)
+        tickets = Ticket.objects.filter(tour=tour)
+        total_tickets = tickets.aggregate(Sum('quantity'))['quantity__sum']
+
+        return render(request, 'ticket_confirmation.html', {'tour': tour, 'total_tickets': total_tickets})
+    else:
+        return HttpResponseRedirect(
+            reverse('user_auth:user_login')
+        )
+
 
 def merch_shop(request):
     if request.user.is_authenticated:

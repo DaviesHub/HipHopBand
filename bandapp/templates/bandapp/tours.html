@@ -16,18 +16,32 @@
                 {% for tour in tour_list %}
                 <div class="row text-center justify-content-around g-5">
                     <div class="col-lg-6">
-                        <div class="card album-card shadow bg-transparent border border-3 border-secondary text-light">
+                        <div class="card album-card shadow bg-transparent border border-3 border-warning text-light">
                             <div class="card-body text-center">
                                 <div class="title mb-3 mt-1">
-                                    <h5 class="card-title">{{ tour.tour_name }}</h5>
+                                    <h5 class="card-title text-warning">{{ tour.tour_name }}</h5>
                                 </div>
                                 <div class="body-image-container">
                                     <img class="img-fluid rounded-top card-img" src="{{ tour.tour_image.url }}" alt=""/>
                                 </div>                                
                                 <a target="_blank" href="#"><button class="btn text-white card-button">{{ tour.tour_location }}</button></a>
-                                <div>
-                                    <a target="_blank" href="/" class="text-decoration-none text-warning fw-bold">See more...</a>
+                                <div class="dropdown">
+                                    <a href='#' class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Get Tickets
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="ticket-drop-down">
+                                        <form method="get" action="{% url 'bandapp:ticket_confirmation' %}" class="d-flex flex-column bg-white text-dark">
+                                            <div class="form-group mb-3 text-center">
+                                                <label class="fw-semibold fs-6 mb-3" for="exampleFormControlInput1">Enter number of tickets</label>
+                                                <input type="number" class="form-control" id="exampleFormControlInput1">
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" name="quantity" class="btn btn-success btn-sm">Buy</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
+                                  
                             </div>
                         </div>
                     </div>

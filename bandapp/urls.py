@@ -7,5 +7,5 @@ app_name = 'bandapp'
 urlpatterns = [
     path('merch_search/', views.merch_search, name='merch_search'),
     path('<slug:album_slug>/', views.album_detail, name='album_detail'),
-    path('<slug:tour_slug>/', views.tour_detail, name='tour_detail'),
+    path('ticket_confirmation/', views.ticket_confirmation, name='ticket_confirmation'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
