@@ -24,16 +24,18 @@
                                 <div class="body-image-container">
                                     <img class="img-fluid rounded-top card-img" src="{{ tour.tour_image.url }}" alt=""/>
                                 </div>                                
-                                <a target="_blank" href="#"><button class="btn text-white card-button">{{ tour.tour_location }}</button></a>
+                                <div class="card-button tour-location mb-3 mt-3 fs-4" style="color: #F0E68C; font-family: 'Notable', sans-serif;">{{ tour.tour_location }}</div>
                                 <div class="dropdown">
                                     <a href='#' class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Get Tickets
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="ticket-drop-down">
-                                        <form method="get" action="{% url 'bandapp:ticket_confirmation' %}" class="d-flex flex-column bg-white text-dark">
+                                        <form method="get" action="{% url 'bandapp:ticket_confirmation' %}" class="d-flex flex-column bg-white text-dark px-3">
                                             <div class="form-group mb-3 text-center">
                                                 <label class="fw-semibold fs-6 mb-3" for="exampleFormControlInput1">Enter number of tickets</label>
-                                                <input type="number" class="form-control" id="exampleFormControlInput1">
+                                                <div>
+                                                    <input type="number" class="form-control" id="exampleFormControlInput1">
+                                                </div>
                                             </div>
                                             <div class="text-center">
                                                 <button type="submit" name="quantity" class="btn btn-success btn-sm">Buy</button>
