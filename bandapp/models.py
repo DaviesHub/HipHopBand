@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Album(models.Model):
     title = models.CharField(max_length=255)
-    cover_art = models.ImageField(upload_to='band_logos/', blank=True, null=True)
+    cover_art = models.ImageField(upload_to='album_coverart/', blank=True, null=True)
     release_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField()
 
@@ -15,16 +15,21 @@ class Album(models.Model):
         return self.title
 
 class TrackList(models.Model):
-    album_title = models.ForeignKey(Album, related_name='track_list', on_delete=models.CASCADE)
-    song_name = models.CharField(max_length=100)
-    track_id = models.IntegerField()
-    slug = models.SlugField()
+    album = models.OneToOneField(Album, on_delete=models.CASCADE, related_name='tracklist', null=True, blank=True, default=None)
 
     class Meta:
         verbose_name_plural = 'Tracklist'
 
     def __str__(self):
-        return self.album_title
+        return self.album.title
+
+class Track(models.Model):
+    tracklist = models.ForeignKey('TrackList', on_delete=models.CASCADE, related_name='tracks')
+    song_name = models.CharField(max_length=100)
+    youtube_video_id = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.song_name
 
 class Tour(models.Model):
     tour_name = models.CharField(max_length=100)
