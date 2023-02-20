@@ -10,6 +10,15 @@
             UPCOMING TOURS
         </div>
 
+        {% if messages %}
+            <div class="alert alert-warning alert-dismissible fade show msg-container" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
         {% if tour_list %}
         <section class="px-sm-5 text-light mt-5">
             <div class="container pt-5">
@@ -26,19 +35,20 @@
                                 </div>                                
                                 <div class="card-button tour-location mb-3 mt-3 fs-4" style="color: #F0E68C; font-family: 'Notable', sans-serif;">{{ tour.tour_location }}</div>
                                 <div class="dropdown">
-                                    <a href='#' class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href='#' class="btn btn-warning dropdown-toggle fw-semibold" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Get Tickets
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="ticket-drop-down">
-                                        <form method="get" action="{% url 'bandapp:ticket_confirmation' %}" class="d-flex flex-column bg-white text-dark px-3">
+                                        <form method="post" action="{% url 'bandapp:buy_ticket' tour.slug %}" class="d-flex flex-column bg-white text-dark px-3">
+                                        {% csrf_token %}
                                             <div class="form-group mb-3 text-center">
                                                 <label class="fw-semibold fs-6 mb-3" for="exampleFormControlInput1">Enter number of tickets</label>
                                                 <div>
-                                                    <input type="number" class="form-control" id="exampleFormControlInput1">
+                                                    <input type="number" name="quantity" class="form-control" value=0 id="exampleFormControlInput1">
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <button type="submit" name="quantity" class="btn btn-success btn-sm">Buy</button>
+                                                <button type="submit" class="btn btn-success btn-sm">Buy</button>
                                             </div>
                                         </form>
                                     </div>

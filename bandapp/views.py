@@ -1,8 +1,9 @@
 from django.db.models import Q
-from django.db.models import Sum
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from datetime import date
 
 from .models import Album, Tour, Merch, Ticket
 
@@ -20,7 +21,7 @@ def albums(request):
 
 def tours(request):
     if request.user.is_authenticated:
-        tour_list = Tour.objects.order_by('-tour_date')[:1]
+        tour_list = Tour.objects.order_by('-tour_date')[:]
         context = {'tour_list': tour_list,}
 
         return render(request, "bandapp/tours.html", context)
@@ -34,34 +35,41 @@ def album_detail(request, album_slug):
 
     return render(request, 'bandapp/album_detail.html', {'album': album})
 
-def tour_detail(request, tour_id, tour_slug):
-    if request.user.is_autheticated:
-        tour = get_object_or_404(Tour, pk=tour_id, slug=tour_slug)
-        if request.method == 'POST':
-            quantity = int(request.POST['quantity'])
-            ticket = Ticket(tour=tour, user=request.user, quantity=quantity)
-            ticket.save()
-
-            return render(request, 'bandapp/ticket_confirmation.html')
-        else:
-            return render(request, 'bandapp/tour_detail.html', {'tour': tour})
-    else:
-        return HttpResponseRedirect(
-            reverse('user_auth:user_login')
-        )
-
-def ticket_confirmation(request, tour_id):
+def buy_ticket(request, slug):
     if request.user.is_authenticated:
-        tour = get_object_or_404(Tour, pk=tour_id)
-        tickets = Ticket.objects.filter(tour=tour)
-        total_tickets = tickets.aggregate(Sum('quantity'))['quantity__sum']
+        tour = get_object_or_404(Tour, slug=slug)
+        tour_list = Tour.objects.order_by('-tour_date')[:]
+        context = {'tour_list': tour_list,}
+        if request.method == 'POST':
+            try:
+                quantity = int(request.POST['quantity'])
+                if quantity <= 0:
+                    raise ValueError(messages.error(request, 'Invalid number of tickets. Enter a positive number of tickets'))
+            except (ValueError):
+                return render(request, 'bandapp/tours.html', context)
+            else:
+                ticket = Ticket.objects.create(tour=tour, user=request.user, quantity=quantity)
+                ticket.save()
+                return HttpResponseRedirect(
+                    reverse('bandapp:ticket_confirmation', args=[ticket.id])
+                )
+        else:
+            return render(request, 'bandapp/tours.html', {'tour': tour})
+    else:
+        return HttpResponseRedirect(
+            reverse('user_auth:user_login') 
+        )
 
-        return render(request, 'ticket_confirmation.html', {'tour': tour, 'total_tickets': total_tickets})
+def ticket_confirmation(request, ticket_id):
+    if request.user.is_authenticated:
+        ticket = get_object_or_404(Ticket, id=ticket_id, user=request.user)
+        tour = ticket.tour
+
+        return render(request, 'bandapp/ticket_confirmation.html', {'ticket': ticket, 'tour': tour})
     else:
         return HttpResponseRedirect(
             reverse('user_auth:user_login')
         )
-
 
 def merch_shop(request):
     if request.user.is_authenticated:

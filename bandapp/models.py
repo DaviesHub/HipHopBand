@@ -46,7 +46,7 @@ class Ticket(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.quantity} tickets for {self.tour.name} ({self.user.username})"
+        return f"{self.quantity} tickets for {self.tour.tour_name} ({self.user.username})"
 
 class Merch(models.Model):
     merch_photo = models.ImageField(upload_to='merch_photos/', blank=True, null=True)

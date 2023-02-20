@@ -2,13 +2,16 @@
 
 {% load static %}
 
-{% block title %}Merch | {% endblock %}
+{% block title %}ticket-details | {% endblock %}
 
 {% block content %}
     <section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
-        <h2>Ticket Confirmation</h2>
-        <p>You have purchased {{ ticket.quantity }} tickets for the {{ ticket.tour.name }} tour.</p>
-        <p>Total price: ${{ total_price }}</p>
+        <div class="h2" style="color: #F0E68C; font-family: 'Notable', sans-serif;">Ticket Confirmation</div>
+        {% if ticket.quantity > 1 %}
+            <p class="mt-5 text-light h4">You have purchased {{ ticket.quantity }} tickets for the <span style="color: #F0E68C; font-family: 'Notable', sans-serif;">{{ tour.tour_name }}</span> tour. See you in <span style="color: #F0E68C; font-family: 'Notable', sans-serif;">{{ tour.tour_location }}</span></p>
+        {% else %}
+            <p class="mt-5 text-light h4">You have purchased {{ ticket.quantity }} ticket for the <span style="color: #F0E68C; font-family: 'Notable', sans-serif;">{{ tour.tour_name }}</span> tour. See you in <span style="color: #F0E68C; font-family: 'Notable', sans-serif;">{{ tour.tour_location }}</span></p>
+        {% endif %}
     </section>
 {% endblock %}
 
