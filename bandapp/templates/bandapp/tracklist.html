@@ -2,20 +2,20 @@
 
 {% load static %}
 
-{% block title %}Albums | {% endblock %}
+{% block title %}{{ album.title }} | {% endblock %}
 
 {% block content %}
-    <section class="section responsive-bg p-sm-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
-        <div class="h4 index-intro">
+    <section class="section responsive-bg p-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="h4 index-intro text-center">
             Album: {{ album.title }}
             <div style="color: yellow; font-weight: semi-bold;" class="mt-4">Enjoy!</div>
         </div>
         
-        <div class="mt-5">
+        <div class="mt-5 pxe-4 text-center">
             {% for track in tracks %}
                 <h3 class="text-white">{{ track.song_name }}</h3>
                 <div class="video-container mb-5">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ track.youtube_video_id }}" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ track.youtube_video_id }}" frameborder="0" allowfullscreen></iframe>
                 </div>
             {% endfor %}
         </div>
