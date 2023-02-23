@@ -3,9 +3,8 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from datetime import date
 
-from .models import Album, Tour, Merch, Ticket
+from .models import Album, Tour, Merch, Ticket, TrackList, Track
 
 # Create your views here.
 def albums(request):
@@ -19,6 +18,23 @@ def albums(request):
             reverse('user_auth:user_login')
         )
 
+# def album_details(request, album_slug):
+#     album = get_object_or_404(Album, slug=album_slug)
+
+#     return render(request, 'bandapp/album_detail.html', {'album': album})
+
+def tracklist(request, album_slug):
+    if request.user.is_authenticated:
+        album = get_object_or_404(Album, slug=album_slug)
+        tracklist = get_object_or_404(TrackList, album=album)
+        tracks = Track.objects.filter(tracklist=tracklist)
+
+        return render(request, 'bandapp/tracklist.html', {'album': album, 'tracks': tracks})
+    else:
+        return HttpResponseRedirect (
+            reverse('user_auth:user_login') 
+        )
+
 def tours(request):
     if request.user.is_authenticated:
         tour_list = Tour.objects.order_by('-tour_date')[:]
@@ -29,11 +45,6 @@ def tours(request):
         return HttpResponseRedirect(
             reverse('user_auth:user_login')
         )
-
-def album_detail(request, album_slug):
-    album = get_object_or_404(Album, slug=album_slug)
-
-    return render(request, 'bandapp/album_detail.html', {'album': album})
 
 def buy_ticket(request, slug):
     if request.user.is_authenticated:
