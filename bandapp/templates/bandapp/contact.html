@@ -1,0 +1,20 @@
+{% extends 'bandapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Merch | {% endblock %}
+
+{% block content %}
+    <section class="section responsive-bg p-5" style="background-image: url('/static/images/index_image.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="h4 index-intro text-center">
+            <span style="color: yellow; font-weight: bold;">Contacts</span>
+        </div>
+
+        <div class="d-flex flex-column text-center mt-5">
+            <div class="h5 contact-icon mb-5"><i class="bi bi-twitter me-2 f-icon text-light"></i><a target="_blank" class="footer-link link-warning" href="#">therealff</a></div>
+            <div class="h5 contact-icon mb-5"><i class="bi bi-facebook me-2 f-icon text-light"></i><span class="footer-link link-warning">funkflex</span></div>
+            <div class="h5 contact-icon mb-5"><i class="bi bi-instagram me-2 f-icon text-light"></i><a target="_blank" class="footer-link link-warning" href="#">ff_group</a></div>
+            <div class="h5 contact-icon mb-5"><i class="bi bi-envelope me-2 f-icon text-light"></i><span class="footer-link link-warning">ffmanagement@ff.co.za</span></div>
+        </div>
+    </section>
+{% endblock %}

@@ -12,5 +12,6 @@ urlpatterns = [
     path('tours/', views.tours, name='tours'),
     path('merch/', views.merch_shop, name='merch'),
     path('albums/', views.albums, name='albums'),
+    path('contact/', views.contact, name='contact'),
     path('', include('bandapp.urls')),
 ]

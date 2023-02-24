@@ -18,11 +18,6 @@ def albums(request):
             reverse('user_auth:user_login')
         )
 
-# def album_details(request, album_slug):
-#     album = get_object_or_404(Album, slug=album_slug)
-
-#     return render(request, 'bandapp/album_detail.html', {'album': album})
-
 def tracklist(request, album_slug):
     if request.user.is_authenticated:
         album = get_object_or_404(Album, slug=album_slug)
@@ -104,3 +99,5 @@ def merch_search(request):
             reverse('user_auth:user_login')
         )
 
+def contact(request):
+    return render(request, 'bandapp/contact.html')
