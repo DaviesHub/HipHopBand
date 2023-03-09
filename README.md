@@ -6,6 +6,7 @@
 3. Installation
 4. Usage
 5. Package Requirements
+6. Acknowledgement
 
 
 ## Description
@@ -26,13 +27,16 @@ The app has not at the time of writing this.
 Full access is only given to registered users. New users are redirected to a login/sign up page.
 ![user auth](login.PNG)
 
-Once any user logs in successfully, the user will have access to the group;s albums, tours, merch and contact (unregistered users can also see the contacts). Users can purchase tour tickets and a ticket confirmation page will be displayed for the user.
+
+Once any user logs in successfully, the user will have access to the group's albums, tours, merch and contact (unregistered users can also see the contacts). Users can purchase tour tickets and a ticket confirmation page will be displayed for the user.
 ![ticket purchase](ticket.PNG)
+
 
 ## Package Requirements
 * Python 3
 * Django 4.1.5
 
+## Acknowledgement
 Index page pic by Omran Soliman on Pexels
 Album pic by dids on Pexels
 Tour pic by Lisa Fotios on Pexels
