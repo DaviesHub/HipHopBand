@@ -9,6 +9,19 @@ from bandapp.views import *
 
 # Create your views here.
 def index(request):
+    '''
+        This function renders the index page for unauthenticated users.
+
+        Args:
+            request: A HttpRequest object that contains the request parameters.
+
+        Returns:
+            A HttpResponse object that renders an HTML template of the index.
+
+        Raises:
+            N/A.
+    '''
+
     return render(request, 'bandapp/index.html')
     
 def user_login(request):
