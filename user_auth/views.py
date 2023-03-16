@@ -25,6 +25,18 @@ def index(request):
     return render(request, 'bandapp/index.html')
     
 def user_login(request):
+    '''
+        This function renders the login page for users to log in.
+
+        Args:
+            request: A HttpRequest object that contains the request parameters.
+
+        Returns:
+            A HttpResponse object that renders an HTML template of the login page.
+
+        Raises:
+            N/A.
+    '''
     return render(request, 'authentication/login.html')
 
 def register(request):
