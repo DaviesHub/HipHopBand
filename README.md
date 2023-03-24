@@ -6,8 +6,11 @@
 3. Installation
 4. Usage
 5. Package Requirements
-6. Acknowledgement
-
+6. Running the Application with Docker
+7. Running the Application on any device with Docker Playground
+8. Contributions
+9. Access Tokens
+10. Acknowledgement
 
 ## Description
 This is a Django web application for a hiphop band with user authentication enabled. Registered users are allowed to view band information like albums, tours, and available merch. Registered users are also allowed to purchase tickets for a tour, buy merch and play album tracks via a youtube link.
@@ -46,7 +49,6 @@ This is a Django web application for a hiphop band with user authentication enab
 
 ![ticket purchase](ticket.PNG)
 
-
 ## Package Requirements
 Package requirements for this app can be seen on the requirements.txt file. See step 3 in installation for more.
 
@@ -76,9 +78,9 @@ Contributions to the project are welcome. Please submit a pull request with your
 This app does not require users to authenticate with an external service that requires access tokens and secret keys.
 
 ## Acknowledgement
-Index page pic by Omran Soliman on Pexels
-Album pic by dids on Pexels
-Tour pic by Lisa Fotios on Pexels
-Merch pic by Vitalinha on Pexels
-Reachout pic by Maria Tyutina on Pexels
-Tour photos by Pixabay on Pexels
+- Index page pic by Omran Soliman on Pexels
+- Album pic by dids on Pexels
+- Tour pic by Lisa Fotios on Pexels
+- Merch pic by Vitalinha on Pexels
+- Reachout pic by Maria Tyutina on Pexels
+- Tour photos by Pixabay on Pexels
