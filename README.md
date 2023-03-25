@@ -74,8 +74,34 @@ This will start the Docker container and map the container's port 8000 to your h
 ## Contributions
 Contributions to the project are welcome. Please submit a pull request with your changes.
 
-## Access Tokens
-This app does not require users to authenticate with an external service that requires access tokens and secret keys.
+## Secret Key
+1. After cloning the repository to your local machine, create a new file in your project directory named .env and add the following line to it:
+
+SECRET_KEY=paste_your_secret_key_here
+
+2. Generate a secret key by running the following command in a Python shell:
+
+from django.core.management.utils import get_random_secret_key
+print(get_random_secret_key())
+
+3. Copy the output of the command to your clipboard.
+
+4. Replace paste_your_secret_key_here in the .env file with the secret key you generated in the previous step.
+
+5. Save the .env file in the project root directory.
+
+6. To access the secret key, you will need to install the python-dotenv package if you have not done so.
+
+7. Once installed, you can access the secret key in your Django settings file by adding the following lines:
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+8. Make sure to add .env to your .gitignore file to ensure that your secret key is not pushed to your GitHub repository.
 
 ## Acknowledgement
 - Index page pic by Omran Soliman on Pexels
